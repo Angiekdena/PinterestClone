@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0041)https://eus.rubiconproject.com/usync.html -->
+<html><div id="twoseven-scripts" data-info="Scripts added by TwoSeven extension" style="display: none !important; position: static !important; top: 0px !important; left: 0px !important; width: 0px !important; height: 0px !important;"><script type="text/javascript" id="__tmpScript-188245498" data-added-by-two-seven="1">(function() {
+        window.twoseven = window.twoseven || {};
+      })();</script><script type="text/javascript" id="__tmpScript-461817605" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForDOMNode = async function t(e,t=document){e=e||{};const{type:n,value:o}=e;if(!n||!o)throw new Error("Must specify identifier");let s=o;switch(n){case"tag":s=o.toUpperCase()}if("check"!==n){const e=i({type:"selector",value:s},[],t);if(e)return new Promise(t=>t(e))}function i({type:e,value:t},n,o){let s;switch(e){case"tag":s=n.find(e=>e.tagName===t);break;case"selector":s=o.querySelector(t)}return s}async function a({type:e,value:t},n,o){let s;switch(e){case"tag":s=n.find(e=>e.tagName===t);break;case"selector":s=o.querySelector(t);break;case"check":for(const e of n){if(await t(e))return e}}return s}return new Promise((e,o)=>{const r=new MutationObserver(async o=>{for(const w of o)if("childList"===w.type){const o=Array.from(w.addedNodes);let d;if(d="check"===n?await a({type:n,value:s},o,t):await i({type:n,value:s},o,t))return r.disconnect(),e(d)}});r.observe(t,{childList:!0,subtree:!0})})};
+      })();</script><script type="text/javascript" id="__tmpScript-420458934" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.reportError = function n(e,t,n){"string"==typeof(n=n||{})&&(n={message:n});const{message:o,stack:s}=t;Object.assign(n,{tag:e,error:{message:o,stack:s}}),window.tsExtGetPostToParent()({name:name,tag:e,action:"report-error",json:n}),console.error(JSON.stringify(n.error))}
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-61496862" data-added-by-two-seven="1">(function() {
+        
+    window.twosevenHmsToSecondsOnly = function(str) {
+        var p = str.split(':'),
+            s = 0, m = 1;
+
+        while (p.length > 0) {
+            s += m * parseInt(p.pop(), 10);
+            m *= 60;
+        }
+
+        return s;
+    }
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-448812614" data-added-by-two-seven="1">(function() {
+        window.twosevenExtLog = function(e,o,c){o||(o=e,e=void 0);let n=c||"black";if(c)switch(c){case"success":n="Green";break;case"info":n="DodgerBlue";break;case"error":n="Red";break;case"warning":n="Orange";break;default:n=c}e?console.log("%c"+e+": "+o,`color:${n}`):console.log("%c"+o,`color:${n}`)};
+      })();</script><script type="text/javascript" id="__tmpScript-696143127" data-added-by-two-seven="1">(function() {
+        
+    document.twosevenGET = function(url, callback) {
+      var xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+          if (xmlhttp.status == 200) {
+            callback(null, xmlhttp.responseText);
+          } else {
+            callback('something else other than 200 was returned', '');
+          }
+        }
+      };
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+    };
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-738114176" data-added-by-two-seven="1">(function() {
+        
+    window.triggerEvent = function(e,t,n,o=!1){let s;o?(n&&"string"!=typeof n&&(n=JSON.stringify(n)),s=n):s={data:n},window.twosevenScriptsDiv&&n&&"object"==typeof n&&(console.warn(`WARNING: Attempting to send an object via event.detail from CS->Page does not work on Firefox: ${JSON.stringify(n)}`),console.error((new Error).stack));var i=new CustomEvent(t,{bubbles:!0,composed:!0,detail:s});e.dispatchEvent(i)}
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-759305930" data-added-by-two-seven="1">(function() {
+        window.twoseven.postTo = async function o(e,t,n=!1){let o;return t.name=t.name||name,o=n?new Promise(e=>{const n=`ack-${t.action}-${1e9*Math.random()|0}`;t.ack={event:n};window.debug&&["play","pause","currentTime"].some(e=>t.action.includes(e)),window.addEventListener("message",function t({data:o={}}){o.action===n&&(window.removeEventListener("message",t),e(o.json))})}):new Promise(e=>e()),e.postMessage(t,"*"),o};
+      })();</script><script type="text/javascript" id="__tmpScript-662262659" data-added-by-two-seven="1">(function() {
+        window.tsExtGetPostTo = function s(){return window.twoseven&&window.twoseven.postTo||window.postTo};
+      })();</script><script type="text/javascript" id="__tmpScript-228142180" data-added-by-two-seven="1">(function() {
+        window.tsExtGetPostToParent = function i(){return window.twoseven&&window.twoseven.postToParent||window.postToParent};
+      })();</script><script type="text/javascript" id="__tmpScript-342594714" data-added-by-two-seven="1">(function() {
+        window.twoseven.postResponse = async function a(e,t){const{source:n,data:{ack:{event:o}}}=e;window.tsExtGetPostTo()(n,{action:o,json:t})};
+      })();</script><script type="text/javascript" id="__tmpScript-948481514" data-added-by-two-seven="1">(function() {
+        window.postResponse = async function a(e,t){const{source:n,data:{ack:{event:o}}}=e;window.tsExtGetPostTo()(n,{action:o,json:t})};
+      })();</script><script type="text/javascript" id="__tmpScript-480809672" data-added-by-two-seven="1">(function() {
+        window.twoseven.postToParent = async function r(e,t=!1){return window.tsExtGetPostTo()(window.parent,e,t)};
+      })();</script><script type="text/javascript" id="__tmpScript-391313544" data-added-by-two-seven="1">(function() {
+        window.twoseven.postToTop = async function w(e,t=!1){return window.tsExtGetPostTo()(window.top,e,t)};
+      })();</script><script type="text/javascript" id="__tmpScript-437898449" data-added-by-two-seven="1">(function() {
+        window.postToTop = async function w(e,t=!1){return window.tsExtGetPostTo()(window.top,e,t)};
+      })();</script><script type="text/javascript" id="__tmpScript-338343770" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.getFromStorage = e=>new Promise((t,n)=>{const o="get-from-storage-"+(1e9*Math.random()|0);window.addEventListener(o,e=>{window.removeEventListener(o,this);const{detail:{data:{value:n}}}=e;t(n)}),triggerEvent(window,"get-from-storage",{key:e,evt:o})})
+    window.twoseven.saveToStorage = e=>{triggerEvent(window,"save-to-storage",e)}
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-472452684" data-added-by-two-seven="1">(function() {
+        
+    window.attachHistoryListeners = function d(){var e=history.pushState;history.pushState=function(t,n,o){return"function"==typeof history.onpushstate&&history.onpushstate({state:t}),triggerEvent(window,"pushstate",{uri:o}),e.apply(history,arguments)};var t=history.replaceState;history.replaceState=function(e){return"function"==typeof history.onreplacestate&&history.onreplacestate({state:e}),t.apply(history,arguments)}}
+    window.attachHistoryListeners()
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-212657105" data-added-by-two-seven="1">(function() {
+        window.twoseven.once = function c(e,t,n){e.addEventListener(t,function o(s){e.removeEventListener(t,o),n(s)})};
+      })();</script><script type="text/javascript" id="__tmpScript-810641348" data-added-by-two-seven="1">(function() {
+        window.nextTick = function v(){return new Promise(e=>setTimeout(e,0))};
+      })();</script><script type="text/javascript" id="__tmpScript-689742360" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.isOnTwoSevenTab = async () => {
+      const result = await window.twoseven.postTo(window, { action: 'is-on-twoseven-tab' }, true)
+      return result
+    }
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-169417301" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.isPaused = async () => {
+      const result = await window.twoseven.postTo(window, { action: 'twoseven:pause-state' }, true)
+      return result
+    }
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-707742712" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForProp = function u(e,t,n){return new Promise(o=>{if(e[t])return void o();const s=setInterval(()=>{e[t]&&(clearInterval(s),o())},n)})};
+      })();</script><script type="text/javascript" id="__tmpScript-883892951" data-added-by-two-seven="1">(function() {
+        window.twoseven.overrideMethod = function g(e,t,n){const o=e[t].bind(e);e[t]=async function(...e){return await n(...e),o(...e)}};
+      })();</script><script type="text/javascript" id="__tmpScript-275401004" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForVideoTimeUpdate = function p(e,t=3){return new Promise(n=>{let o=0;const s=()=>{++o===t&&(e.removeEventListener("timeupdate",s),n())};e.addEventListener("timeupdate",s)})};
+      })();</script><script type="text/javascript" id="__tmpScript-232447221" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForVideoReadyState = function l(e,t,n=30){return t(e.readyState)?Promise.resolve():new Promise(o=>{const s=setInterval(()=>{t(e.readyState)&&(clearInterval(s),o())},n)})};
+      })();</script><script type="text/javascript" id="__tmpScript-52991442" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForVideoToHaveFutureData = function m(e,...t){return window.twoseven.waitForVideoReadyState(e,e=>e>=3,...t)};
+      })();</script><script type="text/javascript" id="__tmpScript-10501876" data-added-by-two-seven="1">(function() {
+        window.twoseven = window.twoseven || {};
+      })();</script><script type="text/javascript" id="__tmpScript-425443679" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForDOMNode = async function t(e,t=document){e=e||{};const{type:n,value:o}=e;if(!n||!o)throw new Error("Must specify identifier");let s=o;switch(n){case"tag":s=o.toUpperCase()}if("check"!==n){const e=i({type:"selector",value:s},[],t);if(e)return new Promise(t=>t(e))}function i({type:e,value:t},n,o){let s;switch(e){case"tag":s=n.find(e=>e.tagName===t);break;case"selector":s=o.querySelector(t)}return s}async function a({type:e,value:t},n,o){let s;switch(e){case"tag":s=n.find(e=>e.tagName===t);break;case"selector":s=o.querySelector(t);break;case"check":for(const e of n){if(await t(e))return e}}return s}return new Promise((e,o)=>{const r=new MutationObserver(async o=>{for(const w of o)if("childList"===w.type){const o=Array.from(w.addedNodes);let d;if(d="check"===n?await a({type:n,value:s},o,t):await i({type:n,value:s},o,t))return r.disconnect(),e(d)}});r.observe(t,{childList:!0,subtree:!0})})};
+      })();</script><script type="text/javascript" id="__tmpScript-752321801" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.reportError = function n(e,t,n){"string"==typeof(n=n||{})&&(n={message:n});const{message:o,stack:s}=t;Object.assign(n,{tag:e,error:{message:o,stack:s}}),window.tsExtGetPostToParent()({name:name,tag:e,action:"report-error",json:n}),console.error(JSON.stringify(n.error))}
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-410413357" data-added-by-two-seven="1">(function() {
+        
+    window.twosevenHmsToSecondsOnly = function(str) {
+        var p = str.split(':'),
+            s = 0, m = 1;
+
+        while (p.length > 0) {
+            s += m * parseInt(p.pop(), 10);
+            m *= 60;
+        }
+
+        return s;
+    }
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-398308133" data-added-by-two-seven="1">(function() {
+        window.twosevenExtLog = function(e,o,c){o||(o=e,e=void 0);let n=c||"black";if(c)switch(c){case"success":n="Green";break;case"info":n="DodgerBlue";break;case"error":n="Red";break;case"warning":n="Orange";break;default:n=c}e?console.log("%c"+e+": "+o,`color:${n}`):console.log("%c"+o,`color:${n}`)};
+      })();</script><script type="text/javascript" id="__tmpScript-572400286" data-added-by-two-seven="1">(function() {
+        
+    document.twosevenGET = function(url, callback) {
+      var xmlhttp = new XMLHttpRequest();
+
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+          if (xmlhttp.status == 200) {
+            callback(null, xmlhttp.responseText);
+          } else {
+            callback('something else other than 200 was returned', '');
+          }
+        }
+      };
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+    };
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-825348870" data-added-by-two-seven="1">(function() {
+        
+    window.triggerEvent = function(e,t,n,o=!1){let s;o?(n&&"string"!=typeof n&&(n=JSON.stringify(n)),s=n):s={data:n},window.twosevenScriptsDiv&&n&&"object"==typeof n&&(console.warn(`WARNING: Attempting to send an object via event.detail from CS->Page does not work on Firefox: ${JSON.stringify(n)}`),console.error((new Error).stack));var i=new CustomEvent(t,{bubbles:!0,composed:!0,detail:s});e.dispatchEvent(i)}
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-682353846" data-added-by-two-seven="1">(function() {
+        window.twoseven.postTo = async function o(e,t,n=!1){let o;return t.name=t.name||name,o=n?new Promise(e=>{const n=`ack-${t.action}-${1e9*Math.random()|0}`;t.ack={event:n};window.debug&&["play","pause","currentTime"].some(e=>t.action.includes(e)),window.addEventListener("message",function t({data:o={}}){o.action===n&&(window.removeEventListener("message",t),e(o.json))})}):new Promise(e=>e()),e.postMessage(t,"*"),o};
+      })();</script><script type="text/javascript" id="__tmpScript-413577327" data-added-by-two-seven="1">(function() {
+        window.tsExtGetPostTo = function s(){return window.twoseven&&window.twoseven.postTo||window.postTo};
+      })();</script><script type="text/javascript" id="__tmpScript-343517728" data-added-by-two-seven="1">(function() {
+        window.tsExtGetPostToParent = function i(){return window.twoseven&&window.twoseven.postToParent||window.postToParent};
+      })();</script><script type="text/javascript" id="__tmpScript-872588858" data-added-by-two-seven="1">(function() {
+        window.twoseven.postResponse = async function a(e,t){const{source:n,data:{ack:{event:o}}}=e;window.tsExtGetPostTo()(n,{action:o,json:t})};
+      })();</script><script type="text/javascript" id="__tmpScript-733705186" data-added-by-two-seven="1">(function() {
+        window.postResponse = async function a(e,t){const{source:n,data:{ack:{event:o}}}=e;window.tsExtGetPostTo()(n,{action:o,json:t})};
+      })();</script><script type="text/javascript" id="__tmpScript-696549515" data-added-by-two-seven="1">(function() {
+        window.twoseven.postToParent = async function r(e,t=!1){return window.tsExtGetPostTo()(window.parent,e,t)};
+      })();</script><script type="text/javascript" id="__tmpScript-406334207" data-added-by-two-seven="1">(function() {
+        window.twoseven.postToTop = async function w(e,t=!1){return window.tsExtGetPostTo()(window.top,e,t)};
+      })();</script><script type="text/javascript" id="__tmpScript-634576257" data-added-by-two-seven="1">(function() {
+        window.postToTop = async function w(e,t=!1){return window.tsExtGetPostTo()(window.top,e,t)};
+      })();</script><script type="text/javascript" id="__tmpScript-547918829" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.getFromStorage = e=>new Promise((t,n)=>{const o="get-from-storage-"+(1e9*Math.random()|0);window.addEventListener(o,e=>{window.removeEventListener(o,this);const{detail:{data:{value:n}}}=e;t(n)}),triggerEvent(window,"get-from-storage",{key:e,evt:o})})
+    window.twoseven.saveToStorage = e=>{triggerEvent(window,"save-to-storage",e)}
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-110451006" data-added-by-two-seven="1">(function() {
+        
+    window.attachHistoryListeners = function d(){var e=history.pushState;history.pushState=function(t,n,o){return"function"==typeof history.onpushstate&&history.onpushstate({state:t}),triggerEvent(window,"pushstate",{uri:o}),e.apply(history,arguments)};var t=history.replaceState;history.replaceState=function(e){return"function"==typeof history.onreplacestate&&history.onreplacestate({state:e}),t.apply(history,arguments)}}
+    window.attachHistoryListeners()
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-249404750" data-added-by-two-seven="1">(function() {
+        window.twoseven.once = function c(e,t,n){e.addEventListener(t,function o(s){e.removeEventListener(t,o),n(s)})};
+      })();</script><script type="text/javascript" id="__tmpScript-693427869" data-added-by-two-seven="1">(function() {
+        window.nextTick = function v(){return new Promise(e=>setTimeout(e,0))};
+      })();</script><script type="text/javascript" id="__tmpScript-906022717" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.isOnTwoSevenTab = async () => {
+      const result = await window.twoseven.postTo(window, { action: 'is-on-twoseven-tab' }, true)
+      return result
+    }
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-239553143" data-added-by-two-seven="1">(function() {
+        
+    window.twoseven.isPaused = async () => {
+      const result = await window.twoseven.postTo(window, { action: 'twoseven:pause-state' }, true)
+      return result
+    }
+  ;
+      })();</script><script type="text/javascript" id="__tmpScript-455102643" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForProp = function u(e,t,n){return new Promise(o=>{if(e[t])return void o();const s=setInterval(()=>{e[t]&&(clearInterval(s),o())},n)})};
+      })();</script><script type="text/javascript" id="__tmpScript-604445079" data-added-by-two-seven="1">(function() {
+        window.twoseven.overrideMethod = function g(e,t,n){const o=e[t].bind(e);e[t]=async function(...e){return await n(...e),o(...e)}};
+      })();</script><script type="text/javascript" id="__tmpScript-672207982" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForVideoTimeUpdate = function p(e,t=3){return new Promise(n=>{let o=0;const s=()=>{++o===t&&(e.removeEventListener("timeupdate",s),n())};e.addEventListener("timeupdate",s)})};
+      })();</script><script type="text/javascript" id="__tmpScript-360543658" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForVideoReadyState = function l(e,t,n=30){return t(e.readyState)?Promise.resolve():new Promise(o=>{const s=setInterval(()=>{t(e.readyState)&&(clearInterval(s),o())},n)})};
+      })();</script><script type="text/javascript" id="__tmpScript-54417966" data-added-by-two-seven="1">(function() {
+        window.twoseven.waitForVideoToHaveFutureData = function m(e,...t){return window.twoseven.waitForVideoReadyState(e,e=>e>=3,...t)};
+      })();</script><script type="text/javascript" id="__tmpScript-913787927" data-added-by-two-seven="1">(function() {
+        
+    const roomInfo = {
+      roomOwner: undefined,
+      roomType: undefined,
+      roomController: undefined,
+      roomProperties: undefined
+    }
+    window.twoseven.roomInfo = roomInfo
+
+    window.addEventListener('message', ({ data = {} }) => {
+      const { action } = data
+      if (action !== 'room-updated') {
+        return
+      }
+      const { data: { key, value } } = data
+      roomInfo[key] = value
+    })
+  ;
+      })();</script></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>User-Sync</title>
+</head>
+<body marginwidth="0" marginheight="0">
+    <script type="text/javascript" src="./usync.js.download"></script>
+
+
+</body></html>
